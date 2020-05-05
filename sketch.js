@@ -1,7 +1,7 @@
 var capture;
 var tracker
-var w = 640,
-	h = 480;
+var w = window.innerWidth,
+	h = window.innerHeight;
 let img;
 let isImgLoaded = false;
 

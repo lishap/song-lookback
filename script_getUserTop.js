@@ -56,8 +56,11 @@ var app = {
 				var trackName = data.items[0].name;
 				var artistsName = data.items[0].artists["0"].name;
 				window.albumCoverURL = data.items["0"].album["images"][1].url;
+				debugger;
 				var trackLink = data.items["0"].external_urls["spotify"];
 				var previewURL = data.items[0].preview_url;
+				window.songId - data.items["0"].id;
+				debugger;
 
 				const monthNames = ["January", "February", "March", "April", "May", "June",
 				"July", "August", "September", "October", "November", "December"];
@@ -73,9 +76,23 @@ var app = {
 				audioElement.autoplay = 'true';
 				audioElement.controls = 'true';
 
+				app.getBPM(token);
 			},
 		})
 	},
+
+	getBPM: function(token){
+		var url = "https://api.spotify.com/v1/audio-analysis/";
+		var id = window.songId;
+
+		$.ajax({
+			method: "GET",
+			url: url + id,
+			headers: {
+				'Authorization': 'Bearer ' + token,
+			},
+		});
+	}
 }
 
 
