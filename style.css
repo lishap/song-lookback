@@ -22,6 +22,12 @@ img {
     text-align: center;
 }
 
+.bpm{
+    font-size: 30px;
+    text-align: center;
+}
+
+
 .p5Canvas{
     display: block;
     margin-left: auto;
@@ -29,10 +35,12 @@ img {
 }
 
 button{
+    background-color: Transparent;
     font-family:'VT323';
     font-size: 30px;
     text-align: center;
     border:none;
+    outline:none;
 }
 
 button:hover{

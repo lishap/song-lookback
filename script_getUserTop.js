@@ -52,14 +52,14 @@ var app = {
 			
 			success: function(data){
 				
-	
 				var trackName = data.items[0].name;
 				var artistsName = data.items[0].artists["0"].name;
 				window.albumCoverURL = data.items["0"].album["images"][1].url;
 				var trackLink = data.items["0"].external_urls["spotify"];
 				var previewURL = data.items[0].preview_url;
-				
-				window.songId - data.items["0"].id;
+				window.songId = data.items["0"].id;
+
+				console.log("song ID = " + window.songId);
 
 				const monthNames = ["January", "February", "March", "April", "May", "June",
 				"July", "August", "September", "October", "November", "December"];
@@ -77,23 +77,28 @@ var app = {
 				audioElement.autoplay = 'true';
 				console.log("sound play");
 
-				// app.getBPM(token);
+				app.getBPM(token);
 			},
 		})
 	},
 
-// 	getBPM: function(token){
-// 		var url = "https://api.spotify.com/v1/audio-analysis/";
-// 		var id = window.songId;
+	getBPM: function(token){
+		var url = "https://api.spotify.com/v1/audio-analysis/" + window.songId;
+		console.log(url);
 
-// 		$.ajax({
-// 			method: "GET",
-// 			url: url + id,
-// 			headers: {
-// 				'Authorization': 'Bearer ' + token,
-// 			},
-// 		});
-// 	}
+		$.ajax({
+			method: "GET",
+			url: url,
+			headers: {
+				'Authorization': 'Bearer ' + token,
+			},
+
+			success: function(data){
+				window.bpm = data.track.tempo;
+				//$('.bpm').html("The bpm is: " + window.bpm);
+			},
+		});
+	}
 }
 
 
