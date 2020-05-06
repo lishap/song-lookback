@@ -48,6 +48,8 @@ function setup() {
 
 function draw() {
 
+    //console.log("p5.js: " + window.songText);
+
 	if (isImgLoaded === false && window.albumCoverURL !== undefined) {
         img = createImg(window.albumCoverURL);
         img.crossOrigin - 'anonymous';

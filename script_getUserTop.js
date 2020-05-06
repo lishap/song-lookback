@@ -58,16 +58,19 @@ var app = {
 				window.albumCoverURL = data.items["0"].album["images"][1].url;
 				var trackLink = data.items["0"].external_urls["spotify"];
 				var previewURL = data.items[0].preview_url;
+				
 				window.songId - data.items["0"].id;
 
 				const monthNames = ["January", "February", "March", "April", "May", "June",
 				"July", "August", "September", "October", "November", "December"];
-
 				var date = new Date ();
 				window.month = monthNames[date.getMonth()];
 				window.year = date.getFullYear();
 
 				$('.track-artist-name').html("My favorite song as of " + month + ", " + year + " is <a href=" + trackLink + ">" + trackName + " by " + artistsName + "</a> !");
+
+				window.songText = ("My favorite song as of " + month + ", " + year + " is " + trackName + " by " + artistsName + "!");
+				console.log(window.songText);
 				
 				var audioElement = document.createElement('audio');
 				audioElement.src = previewURL;
