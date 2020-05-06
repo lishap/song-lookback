@@ -1,7 +1,7 @@
 var capture;
 var tracker
-var w = window.innerWidth,
-	h = window.innerHeight;
+var w = 640,
+	h = 480;
 let img;
 let isImgLoaded = false;
 
@@ -34,18 +34,23 @@ function setup() {
     tracker.init();
     tracker.start(capture.elt);
     
-    // snapButton = createButton('Snap');
-    // snapButton.position(250,550);
-    // snapButton.mousePressed(snapImage);
+    snapButton = createButton('Snap');
+    saveButton = createButton('Save');
 
-    // saveButton = createButton('Save');
-	// saveButton.position(0,550);
-    // saveButton.mousePressed(saveImage);
+    saveButton.position(650,680);
+    saveButton.mousePressed(saveImage);
+    console.log("save button");
+
+    snapButton.position(850,680);
+    snapButton.mousePressed(snapImage);
+    console.log("snap button")
 }
 
 function draw() {
+
 	if (isImgLoaded === false && window.albumCoverURL !== undefined) {
-		img = createImg(window.albumCoverURL);
+        img = createImg(window.albumCoverURL);
+        img.crossOrigin - 'anonymous';
 		isImgLoaded = true
     }
 
@@ -56,50 +61,48 @@ function draw() {
         fill(0, 255, 255);
         image(img,((positions[62][0])-80), ((positions[62][1])-300), 175, 175);
     }
-}
-            
     
-//     if (mode ==0){
-//         image(capture, 0, 0, w, h);
-//         var positions = tracker.getCurrentPosition();
-//         if (positions.length > 0) {
-//             noStroke();
-//             fill(0, 255, 255);
-//             image(img,((positions[62][0])-80), ((positions[62][1])-300), 175, 175);
+    if (mode ==0){
+        image(capture, 0, 0, w, h);
+        var positions = tracker.getCurrentPosition();
+        if (positions.length > 0) {
+            noStroke();
+            fill(0, 255, 255);
+            image(img,((positions[62][0])-80), ((positions[62][1])-300), 175, 175);
             
-//         }
-//     } else if (mode == 1){
-//         image(capture, 0, 0, w, h);
-//         saveCanvas("'" + window.month + window.year + "'", "jpg");
-//         modo = 0;
+        }
+    } else if (mode == 1){
+        image(capture, 0, 0, w, h);
+        saveCanvas("'" + window.month + window.year + "'", "jpg");
+        modo = 0;
 
-//         var positions = tracker.getCurrentPosition();
-//         if (positions.length > 0) {
-//             noStroke();
-//             fill(0, 255, 255);
-//             image(img,((positions[62][0])-80), ((positions[62][1])-300), 175, 175);
+        var positions = tracker.getCurrentPosition();
+        if (positions.length > 0) {
+            noStroke();
+            fill(0, 255, 255);
+            image(img,((positions[62][0])-80), ((positions[62][1])-300), 175, 175);
 
-//         }
-//     }
-// }
+        }
+    }
+}
 
-// function snapImage(){;
-//     image(capture, 0, 0, w, h);
-//     var positions = tracker.getCurrentPosition();
-//     if (positions.length > 0) {
-//         noStroke();
-//         fill(0, 255, 255);
-//         image(img,((positions[62][0])-80), ((positions[62][1])-300), 175, 175);
+function snapImage(){;
+    image(capture, 0, 0, w, h);
+    var positions = tracker.getCurrentPosition();
+    if (positions.length > 0) {
+        noStroke();
+        fill(0, 255, 255);
+        image(img,((positions[62][0])-80), ((positions[62][1])-300), 175, 175);
 
-//         photobooth = capture.get();
-//         image(photobooth, 0, 0);
-//         takeSnap = true;
+        photobooth = capture.get();
+        image(photobooth, 0, 0);
+        takeSnap = true;
 
-//     }
-// }
+    }
+}
 
-// function saveImage(){
-//     if(takeSnap){
-//         mode = 1;
-//        }
-// }
+function saveImage(){
+    if(takeSnap){
+        mode = 1;
+       }
+}

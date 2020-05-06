@@ -28,3 +28,23 @@ img {
     margin-right: auto;
 }
 
+button{
+    font-family:'VT323';
+    font-size: 30px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+@media only screen and (max-width : 780px) {
+    .track-artist-name{
+        font-size: 60px;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width : 480px) {
+    .track-artist-name{
+        font-size: 80px;
+        text-align: center;
+    }
+}
