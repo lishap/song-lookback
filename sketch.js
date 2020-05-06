@@ -104,5 +104,5 @@ function snapImage(){;
 function saveImage(){
     if(takeSnap){
         mode = 1;
-       }
+       }    
 }
