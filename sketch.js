@@ -11,6 +11,9 @@ let mode = 0;
 let takeSnap = false;
 
 function setup() {
+    frameRate(4);
+        //frameRate(window.delayInterval); 
+
     capture = createCapture({
         audio: false,
         video: {
@@ -38,12 +41,7 @@ function setup() {
     saveButton = createButton('Save');
 
     saveButton.position(650,680);
-    saveButton.mousePressed(saveImage);
-    console.log("save button");
-
     snapButton.position(850,680);
-    snapButton.mousePressed(snapImage);
-    console.log("snap button")
 }
 
 function draw() {
@@ -52,7 +50,7 @@ function draw() {
 
 	if (isImgLoaded === false && window.albumCoverURL !== undefined) {
         img = createImg(window.albumCoverURL);
-        img.crossOrigin - 'anonymous';
+        img.crossOrigin = 'anonymous';
 		isImgLoaded = true
     }
 
@@ -86,6 +84,9 @@ function draw() {
 
         }
     }
+
+    saveButton.mousePressed(saveImage);
+    snapButton.mousePressed(snapImage);
 }
 
 function snapImage(){;
@@ -95,12 +96,12 @@ function snapImage(){;
         noStroke();
         fill(0, 255, 255);
         image(img,((positions[62][0])-80), ((positions[62][1])-300), 175, 175);
-
-        photobooth = capture.get();
-        image(photobooth, 0, 0);
-        takeSnap = true;
-
     }
+
+    photobooth = capture.get();
+    image(photobooth, 0, 0);
+    takeSnap = true;
+
 }
 
 function saveImage(){
