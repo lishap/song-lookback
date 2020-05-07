@@ -12,7 +12,7 @@ let takeSnap = false;
 
 function setup() {
     frameRate(4);
-        //frameRate(window.delayInterval); 
+    //frameRate(window.delayInterval); 
 
     capture = createCapture({
         audio: false,
@@ -88,6 +88,8 @@ function draw() {
     saveButton.mousePressed(saveImage);
     snapButton.mousePressed(snapImage);
 }
+
+//https://p5js.org/reference/#/p5/createGraphics
 
 function snapImage(){;
     image(capture, 0, 0, w, h);
