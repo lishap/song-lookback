@@ -23,70 +23,83 @@
 				app.initialize();
 			});		
 		</script>
+		<!-- <div id="discoBall">
+			<img src="discoball-1.gif">
+		</div> -->
 		<div class="container">
 			<div class="track-artist-name"></div>
 			<div class="bpm"></div>
 			<div class="p5Canvas"></div>
+			<button id="discoButton" onclick="discoMode()"> Disco Mode</button>
 		</div>
 		<!-- <script> src="disco.js"</script> -->
 		<script>
-			var bodyElement = document.querySelector("body");
-			 
-			 var requestAnimationFrame = window.requestAnimationFrame || 
-										 window.mozRequestAnimationFrame || 
-										 window.webkitRequestAnimationFrame || 
-										 window.msRequestAnimationFrame;
-			  
-			 var delay = 0;
-			  
-			 function changeColor() {
-				 if (window.bpm > 60){
-					 var newBpm = window.bpm/2
-				 }
-				 
-				window.delayInterval = (newBpm/60);
+			function discoMode(){
+				// var x = document.getElementById("discoBall");
+				// if (x.style.display === "none") {
+				// 	x.style.display = "block";
+				// } else {
+				// 	x.style.display = "none";
+				// }
 
-				console.log("delay interval is" + delayInterval)
+				var bodyElement = document.querySelector("body");
 				
-				delay++;
-				  
-				 if (delay > delayInterval) {
-					 bodyElement.style.backgroundColor = getRandomColor();
-					 delay = 0;
-				 }
-			  
-				 requestAnimationFrame(changeColor);
-			 }
-			 changeColor();           
-			  
-			 function getRandomColor() {
-				 // creating a random number between 0 and 255
-				 var r = Math.floor(Math.random()*256);
-				 var g = Math.floor(Math.random()*256);
-				 var b = Math.floor(Math.random()*256);
-				  
-				 // going from decimal to hex
-				 var hexR = r.toString(16);
-				 var hexG = g.toString(16);
-				 var hexB = b.toString(16);
-				  
-				 // making sure single character values are prepended with a "0"
-				 if (hexR.length == 1) {
-					 hexR = "0" + hexR;
-				 }
-				  
-				 if (hexG.length == 1) {
-					 hexG = "0" + hexG;
-				 }
-			  
-				 if (hexB.length == 1) {
-					 hexB = "0" + hexB;
-				 }
-			  
-				 // creating the hex value by concatenatening the string values
-				 var hexColor = "#" + hexR + hexG + hexB + 60;
-				 return hexColor.toUpperCase();
-			 }
+				var requestAnimationFrame = window.requestAnimationFrame || 
+											window.mozRequestAnimationFrame || 
+											window.webkitRequestAnimationFrame || 
+											window.msRequestAnimationFrame;
+				
+				var delay = 0;
+				
+				function changeColor() {
+					if (window.bpm > 60){
+						var newBpm = window.bpm/2
+					}
+					
+					window.delayInterval = (newBpm/60);
+
+					console.log("delay interval is" + delayInterval)
+					
+					delay++;
+					
+					if (delay > delayInterval) {
+						bodyElement.style.backgroundColor = getRandomColor();
+						delay = 0;
+					}
+				
+					requestAnimationFrame(changeColor);
+				}
+				changeColor();           
+				
+				function getRandomColor() {
+					// creating a random number between 0 and 255
+					var r = Math.floor(Math.random()*256);
+					var g = Math.floor(Math.random()*256);
+					var b = Math.floor(Math.random()*256);
+					
+					// going from decimal to hex
+					var hexR = r.toString(16);
+					var hexG = g.toString(16);
+					var hexB = b.toString(16);
+					
+					// making sure single character values are prepended with a "0"
+					if (hexR.length == 1) {
+						hexR = "0" + hexR;
+					}
+					
+					if (hexG.length == 1) {
+						hexG = "0" + hexG;
+					}
+				
+					if (hexB.length == 1) {
+						hexB = "0" + hexB;
+					}
+				
+					// creating the hex value by concatenatening the string values
+					var hexColor = "#" + hexR + hexG + hexB + 60;
+					return hexColor.toUpperCase();
+				}
+			}
 		</script>
 	</body>
 </html>

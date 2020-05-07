@@ -52,6 +52,16 @@ button:hover{
 
 }
 
+#discoButton{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#discoBall{
+    display: none;
+}
+
 
 @media only screen and (max-width : 480px) {
     .track-artist-name{

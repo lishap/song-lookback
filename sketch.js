@@ -9,9 +9,10 @@ let snapButton;
 let saveButton;
 let mode = 0;
 let takeSnap = false;
+let discoButton;
 
 function setup() {
-    frameRate(4);
+    frameRate(12);
     //frameRate(window.delayInterval); 
 
     capture = createCapture({
@@ -40,8 +41,9 @@ function setup() {
     snapButton = createButton('Snap');
     saveButton = createButton('Save');
 
-    saveButton.position(650,680);
-    snapButton.position(850,680);
+    saveButton.position(650,700);
+    snapButton.position(850,700);
+
 }
 
 function draw() {
